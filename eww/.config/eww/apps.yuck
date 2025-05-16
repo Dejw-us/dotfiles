@@ -1,0 +1,23 @@
+(
+  defpoll apps_data
+  :interval "1h"
+  :initial "[]"
+  "cat ./apps.json"
+)
+
+(
+  defwidget apps[]
+  (
+    box
+    :halign "center"
+    (
+      for app in apps_data
+      (
+        button
+        :class "app"
+        :onclick {app.exec}
+        {app.name}
+      )
+    )
+  )
+)

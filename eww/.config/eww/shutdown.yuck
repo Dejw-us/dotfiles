@@ -1,0 +1,8 @@
+(
+  defwidget shutdown[]
+  (
+    button
+    :onclick "shutdown now"
+    "Shutdown"
+  )
+)

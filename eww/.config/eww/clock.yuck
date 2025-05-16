@@ -1,0 +1,28 @@
+(
+  defvar foo
+  "test"
+)
+
+(
+  defvar data
+  "[1, 2, 3]"
+)
+
+(
+  defpoll time
+  :interval "10s"
+  :initial "initial"
+  :run-while time-visible
+  `date +%H:%M`
+)
+
+(
+  defwidget clock[]
+  (
+    box
+    :class "clock"
+    :orientation "horizontal"
+    :halign "center"
+    time
+  )
+)

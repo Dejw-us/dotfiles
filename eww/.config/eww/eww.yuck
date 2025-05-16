@@ -1,0 +1,42 @@
+(include "./clock.yuck")
+(include "./shutdown.yuck")
+(include "./apps.yuck")
+
+(
+  defwindow task_bar
+  :geometry (
+    geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "30px"
+    :anchor "bottom center"
+  )
+  :monitor 0
+  :stacking "fg"
+  :reserve (
+    struts
+    :distance "30px"
+    :side "bottom"
+  )
+  :exclusive true
+  :windowtype "dock"
+  :wm-ignore false
+  (
+    box
+    (
+      box
+      :halign "start"
+      (shutdown)
+    )
+    (
+      box
+      (apps)
+    )
+    (
+      box
+      :halign "end"
+      (clock)
+    )
+  )
+)

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Firefox",
+    "exec": "firefox"
+  },
+  {
+    "name": "Code",
+    "exec": "code"
+  }
+]
