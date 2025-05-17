@@ -12,7 +12,7 @@
       box
       (
         input
-        :class "launcher"
+        :class "launcher bg"
         :value "${user_input}"
         :onchange "${EWW_CMD} open launcher_completions && ${EWW_CMD} update apps=\"$(python ~/.config/eww/scripts/app_filter.py {})\""
         :onaccept "python ~/.config/eww/scripts/run_app.py \"${apps}\""

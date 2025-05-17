@@ -1,8 +1,13 @@
 (
   defwidget shutdown[]
   (
-    button
-    :onclick "shutdown now"
-    "Shutdown"
+    box
+    :width 10
+    (
+      button
+      :class "bg shutdown"
+      :onclick "shutdown now"
+      "󰐥"
+    )
   )
 )

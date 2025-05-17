@@ -46,6 +46,7 @@
     eventbox
     (
       box
+      :class "task-bar"
       (
         box
         :halign "start"

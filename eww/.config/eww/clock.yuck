@@ -20,7 +20,7 @@
   defwidget clock[]
   (
     box
-    :class "clock"
+    :class "clock bg"
     :orientation "horizontal"
     :halign "center"
     time
