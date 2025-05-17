@@ -1,0 +1,36 @@
+(
+  defvar user_input
+  "tes"
+)
+
+(
+  defvar apps
+  "[]"
+)
+
+
+(
+  defwidget app_launcher[]
+  (
+    box
+    (
+      input
+      :class "launcher"
+      :value "hej"
+      :onchange "${EWW_CMD} update apps=\"$(python /home/json/.config/eww/scripts/app_filter.py {})\""
+      :onaccept "{}"
+    )
+    (
+      box
+      :class "completions"
+      (
+        for app in apps
+        (
+          button
+          :onclick "${app}"
+          "${app}"
+        )
+      )
+    )
+  )
+)

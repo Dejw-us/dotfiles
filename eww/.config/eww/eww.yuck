@@ -1,6 +1,13 @@
 (include "./clock.yuck")
 (include "./shutdown.yuck")
 (include "./apps.yuck")
+(include "./app_launcher.yuck")
+
+(
+  defvar is_hovered
+  false
+)
+
 
 (
   defwindow task_bar
@@ -12,6 +19,7 @@
     :height "30px"
     :anchor "bottom center"
   )
+  :focusable "ondemand"
   :monitor 0
   :stacking "fg"
   :reserve (
@@ -23,20 +31,54 @@
   :windowtype "dock"
   :wm-ignore false
   (
-    box
+    eventbox
+    :onhoverlost "notify-send lost"
     (
       box
-      :halign "start"
-      (shutdown)
+      (
+        box
+        :halign "start"
+        (
+          box
+          (shutdown)
+        )
+        (
+          box
+          (app_launcher)
+        )
+      )
+      (
+        box
+        (apps)
+      )
+      (
+        box
+        :halign "end"
+        (clock)
+      )
     )
+  )
+)
+
+(
+  defwindow app_launcher_window
+  :geometry (
+    geometry
+    :x "0%"
+    :y "0%"
+    :width "100%"
+    :height "30px"
+    :anchor "center"
+  )
+  :focusable "ondemand"
+  :monitor 0
+  (
+    eventbox
+    :onhover "eww update is_hovered=true"
+    :onhoverlost "eww update is_hovered=false"
     (
       box
-      (apps)
-    )
-    (
-      box
-      :halign "end"
-      (clock)
+      (app_launcher)
     )
   )
 )
