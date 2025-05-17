@@ -1,35 +1,21 @@
 (
   defvar user_input
-  "tes"
+  ""
 )
-
-(
-  defvar apps
-  "[]"
-)
-
 
 (
   defwidget app_launcher[]
   (
-    box
-    (
-      input
-      :class "launcher"
-      :value "hej"
-      :onchange "${EWW_CMD} update apps=\"$(python /home/json/.config/eww/scripts/app_filter.py {})\""
-      :onaccept "{}"
-    )
+    eventbox
+    :onhoverlost "${EWW_CMD} update user_input=\"\" && ${EWW_CMD} close launcher_completions"
     (
       box
-      :class "completions"
       (
-        for app in apps
-        (
-          button
-          :onclick "${app}"
-          "${app}"
-        )
+        input
+        :class "launcher"
+        :value "${user_input}"
+        :onchange "${EWW_CMD} open launcher_completions && ${EWW_CMD} update apps=\"$(python ~/.config/eww/scripts/app_filter.py {})\""
+        :onaccept "python ~/.config/eww/scripts/run_app.py \"${apps}\""
       )
     )
   )

@@ -1,0 +1,15 @@
+(
+  defwidget completions[]
+  (
+    box
+    :orientation "vertical"
+    (
+      for app in apps
+      (
+        label
+        :class "completion"
+        :text "${app}"
+      )
+    )
+  )
+)

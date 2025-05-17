@@ -2,12 +2,24 @@
 (include "./shutdown.yuck")
 (include "./apps.yuck")
 (include "./app_launcher.yuck")
+(include "./widgets/completions.yuck")
+
+(defvar apps "[]")
+(defvar is_hovered false)
 
 (
-  defvar is_hovered
-  false
+  defwindow launcher_completions
+  :geometry (
+    geometry
+    :x "170px"
+    :y "0%"
+    :width "200px"
+    :anchor "bottom left"
+  )
+  :monitor 0
+  :stacking "fg"
+  (completions)
 )
-
 
 (
   defwindow task_bar
@@ -32,7 +44,6 @@
   :wm-ignore false
   (
     eventbox
-    :onhoverlost "notify-send lost"
     (
       box
       (

@@ -30,4 +30,4 @@ sorted_apps = sorted(
   key=lambda app: (not app.lower().startswith(filter), app)
 )
 
-echo(json.dumps(sorted_apps[0:2]))
+echo(json.dumps(sorted_apps[0:15]))
